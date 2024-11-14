@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Format for Kashipower</title>
+</head>
+<body>
+
+    <label for="kashipower">Injizamo imibare ya Kashipower:</label>
+    <input type="text" id="kashipower" placeholder="1234-4567-7575-8756-74645">
+
+    <script>
+        const input = document.getElementById('kashipower');
+
+        input.addEventListener('input', () => {
+            let value = input.value.replace(/[^0-9]/g, ''); // Koresha imibare gusa
+            let formattedValue = '';
+
+            // Guhuza format y’imibare na `-` hagati y’amagambo
+            for (let i = 0; i < value.length; i += 4) {
+                if (formattedValue) formattedValue += '-';
+                formattedValue += value.substr(i, 4);
+            }
+
+            input.value = formattedValue;
+        });
+    </script>
+
+</body>
+</html>
